@@ -11,8 +11,6 @@ import UIKit
 
 class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-   
-    
     @IBOutlet weak var memeMeImage: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTexField: UITextField!
@@ -21,27 +19,53 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //sendButton.isEnabled = false
+        sendButton.isEnabled = false
         //cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
-        
         setAttributesForMemeText(textField: topTextField, placeHolderText: K.topTextPlaceHolder)
         setAttributesForMemeText(textField: bottomTexField, placeHolderText: K.bottomTextPlaceHolder)
         view.backgroundColor = .darkGray
-       
+    }
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        keyBoardNorfication()
-       
+        
+        //this line of code snippet is credited to Udacity
+        //source: lesson 4 code for keyboard adjustemet
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboarWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-       
-        
+        //this line of code snippet is credited to Udacity
+        //source: lesson 4 code for keyboard adjustemet
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    //this snippet of code is also credited to stackoverflow.com
+    //because I was unable to use the one provided by
+    //udacity correctly
+    //source: https://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
+    @objc func keyboarWillShow(_ notification: Notification){
+        if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if view.frame.origin.y == 0 && bottomTexField.isFirstResponder{
+                self.view.frame.origin.y -= keyboardHeight.height
+            }
+        }
     }
 
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        if view.frame.origin.y != 0 && bottomTexField.isFirstResponder{
+            view.frame.origin.y = 0
+        }
+    }
+    
+    
     
     @IBAction func pickImageButtonPressed(_ sender: UIBarButtonItem) {
         switch imageSource(rawValue: sender.tag) {
@@ -66,7 +90,6 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }else{
             errorAlert(title: "Stop", message: "The selected image source is not availlable on this device")
         }
-        
     }
     
     //to catch the user's attention when
@@ -84,17 +107,16 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBAction func actionPerformedButtonPressed(_ sender: UIBarButtonItem) {
         switch actionPerform(rawValue: sender.tag) {
         case .cancel:
-            print("cancel")
+            memeMeImage.image = nil
+            topTextField.text = K.topTextPlaceHolder
+            bottomTexField.text = K.bottomTextPlaceHolder
+            self.dismiss(animated: true, completion: nil)
         case .send:
             print("send")
         default:
-            print("Unknow aciton")
+            print("Unknow action")
         }
     }
-    
-   
-    
-    
 }
 
 extension MemeMeVC: UITextFieldDelegate{
@@ -125,36 +147,12 @@ extension MemeMeVC: UITextFieldDelegate{
         return true
     }
     
-    
-}
-
-extension MemeMeVC{
-    
-   /*
-     this section of the project to show/hide the keyboard is credited to internet research
-     ass I could not have the Udacity's provided code snippet to work correctly
-     sources: 1-  https://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
-                2- https://fluffy.es/move-view-when-keyboard-is-shown/
-     */
-    @objc func keyboardWillShow(notification: NSNotification) {
-        
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        
-        self.view.frame.origin.y = 0 - keyboardSize.height
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+    func generatedMemeImage()->UIImage{
+        self.
     }
-    
-    fileprivate func keyBoardNorfication() {
-        NotificationCenter.default.addObserver(self, selector: #selector(MemeMeVC.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(MemeMeVC.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    
 }
 
