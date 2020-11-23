@@ -23,7 +23,7 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func viewDidLoad() {
         super.viewDidLoad()
         sendButton.isEnabled = false
-        //cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
         setAttributesForMemeText(textField: topTextField, placeHolderText: K.topTextPlaceHolder)
         setAttributesForMemeText(textField: bottomTexField, placeHolderText: K.bottomTextPlaceHolder)
         view.backgroundColor = .darkGray
@@ -105,8 +105,7 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
     
-    //to catch the user's attention when
-    //an error happen
+    //just to catch user's attention
     func errorAlert(title: String, message: String){
         let alertController = UIAlertController()
         alertController.title = title
@@ -115,6 +114,14 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             self.dismiss(animated: true, completion: nil)
         }))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    fileprivate func saveMeme(memeMeMade: UIImage) {
+        if let imageview = self.memeMeImage.image, let topText = self.topTextField.text, let bottomText = self.bottomTexField.text{
+            let _ = Meme(topText: topText, bottomText: bottomText, image: imageview, memeImage: memeMeMade)
+            //-Mark save the meme here using the meme struck,
+            //however no instruction were provided on how to save it
+        }
     }
     
     @IBAction func actionPerformedButtonPressed(_ sender: UIBarButtonItem) {
@@ -126,9 +133,11 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             sendButton.isEnabled = false
             self.dismiss(animated: true, completion: nil)
         case .send:
-            let uiActivityController = UIActivityViewController(activityItems: [makeMeme()], applicationActivities: nil)
+            let memeMeMade = makeMeme()
+            let uiActivityController = UIActivityViewController(activityItems: [memeMeMade], applicationActivities: nil)
             uiActivityController.completionWithItemsHandler = {(_,success,_,_) in
                 if success {
+                    self.saveMeme(memeMeMade: memeMeMade)
                     self.errorAlert(title: "Success", message: "Your Meme was sent Successfully")
                 }
             }
@@ -172,15 +181,16 @@ extension MemeMeVC: UITextFieldDelegate{
     }
     
     //fuction use to generate the meme after modification
+    //credited to Udacity
     func makeMeme()->UIImage{
         
-        hideTheToolbars(isToolbarHiden: true)//toobar should hide themselves
+        hideTheToolbars(isToolbarHiden: true)//toobar will he hidden her
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        hideTheToolbars(isToolbarHiden: false) //toolbar should show themselves
+        hideTheToolbars(isToolbarHiden: false) //toolbar will be shown here
         return image
     }
     
