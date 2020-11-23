@@ -13,7 +13,7 @@
 		1DEAF4462569E38A003D342F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DEAF4442569E38A003D342F /* Main.storyboard */; };
 		1DEAF4482569E38D003D342F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DEAF4472569E38D003D342F /* Assets.xcassets */; };
 		1DEAF44B2569E38D003D342F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DEAF4492569E38D003D342F /* LaunchScreen.storyboard */; };
-		1DEAF45C2569FD6A003D342F /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEAF45B2569FD6A003D342F /* K.swift */; };
+		1DEAF45C2569FD6A003D342F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEAF45B2569FD6A003D342F /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		1DEAF4472569E38D003D342F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DEAF44A2569E38D003D342F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DEAF44C2569E38D003D342F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DEAF45B2569FD6A003D342F /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		1DEAF45B2569FD6A003D342F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				1DEAF4472569E38D003D342F /* Assets.xcassets */,
 				1DEAF4492569E38D003D342F /* LaunchScreen.storyboard */,
 				1DEAF44C2569E38D003D342F /* Info.plist */,
-				1DEAF45B2569FD6A003D342F /* K.swift */,
+				1DEAF45B2569FD6A003D342F /* Constant.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DEAF4432569E38A003D342F /* MemeMeVC.swift in Sources */,
-				1DEAF45C2569FD6A003D342F /* K.swift in Sources */,
+				1DEAF45C2569FD6A003D342F /* Constant.swift in Sources */,
 				1DEAF43F2569E389003D342F /* AppDelegate.swift in Sources */,
 				1DEAF4412569E38A003D342F /* SceneDelegate.swift in Sources */,
 			);

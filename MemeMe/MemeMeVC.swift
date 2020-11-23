@@ -60,14 +60,12 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             }
         }
     }
-
     
     @objc func keyboardWillHide(_ notification: Notification) {
         if view.frame.origin.y != 0 && bottomTexField.isFirstResponder{
             view.frame.origin.y = 0
         }
     }
-    
     
     @IBAction func pickImageButtonPressed(_ sender: UIBarButtonItem) {
         switch imageSource(rawValue: sender.tag) {
@@ -76,7 +74,7 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             pickImage(imageSourceType: imagePickerSourceType)
         case .albumn:
             let imagePickerSourceType = UIImagePickerController.SourceType.photoLibrary
-                pickImage(imageSourceType: imagePickerSourceType)
+            pickImage(imageSourceType: imagePickerSourceType)
         default:
             print("Unknown choice")
         }
@@ -125,6 +123,7 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             memeMeImage.image = nil
             topTextField.text = K.topTextPlaceHolder
             bottomTexField.text = K.bottomTextPlaceHolder
+            sendButton.isEnabled = false
             self.dismiss(animated: true, completion: nil)
         case .send:
             let uiActivityController = UIActivityViewController(activityItems: [makeMeme()], applicationActivities: nil)
@@ -145,7 +144,7 @@ extension MemeMeVC: UITextFieldDelegate{
     //to set the attributes of the top and bottom textfield
     func setAttributesForMemeText(textField: UITextField, placeHolderText: String){
         let textAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedString.Key.font: UIFont(name: K.textFont, size: CGFloat(K.textSize))!,
             NSAttributedString.Key.strokeColor: UIColor.white,
             NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.strokeWidth: 5.0
@@ -174,7 +173,7 @@ extension MemeMeVC: UITextFieldDelegate{
     
     //fuction use to generate the meme after modification
     func makeMeme()->UIImage{
-       
+        
         hideTheToolbars(isToolbarHiden: true)//toobar should hide themselves
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)

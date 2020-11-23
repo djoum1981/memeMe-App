@@ -19,4 +19,6 @@ enum imageSource: Int{
 struct K {
     static  let topTextPlaceHolder = "TOP"
     static let bottomTextPlaceHolder = "BOTTOM"
+    static let textFont = "HelveticaNeue-CondensedBlack"
+    static let textSize = 40
 }
