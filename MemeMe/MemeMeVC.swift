@@ -17,6 +17,9 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var sendButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    @IBOutlet weak var bottomToolBar: UIToolbar!
+    @IBOutlet weak var topToolBar: UIToolbar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sendButton.isEnabled = false
@@ -66,7 +69,6 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     
-    
     @IBAction func pickImageButtonPressed(_ sender: UIBarButtonItem) {
         switch imageSource(rawValue: sender.tag) {
         case .camera:
@@ -92,6 +94,19 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
     }
     
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let imageForMeme = info[.originalImage] as? UIImage{
+            sendButton.isEnabled = true
+            memeMeImage.image = imageForMeme
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     //to catch the user's attention when
     //an error happen
     func errorAlert(title: String, message: String){
@@ -112,7 +127,13 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             bottomTexField.text = K.bottomTextPlaceHolder
             self.dismiss(animated: true, completion: nil)
         case .send:
-            print("send")
+            let uiActivityController = UIActivityViewController(activityItems: [makeMeme()], applicationActivities: nil)
+            uiActivityController.completionWithItemsHandler = {(_,success,_,_) in
+                if success {
+                    self.errorAlert(title: "Success", message: "Your Meme was sent Successfully")
+                }
+            }
+            present(uiActivityController, animated: true, completion: nil)
         default:
             print("Unknow action")
         }
@@ -151,8 +172,29 @@ extension MemeMeVC: UITextFieldDelegate{
         view.endEditing(true)
     }
     
-    func generatedMemeImage()->UIImage{
-        self.
+    //fuction use to generate the meme after modification
+    func makeMeme()->UIImage{
+       
+        hideTheToolbars(isToolbarHiden: true)//toobar should hide themselves
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        hideTheToolbars(isToolbarHiden: false) //toolbar should show themselves
+        return image
+    }
+    
+    
+    //function to hide the toolbar
+    func hideTheToolbars(isToolbarHiden: Bool){
+        if isToolbarHiden{
+            topToolBar.isHidden = true
+            bottomToolBar.isHidden = true
+        }else{
+            topToolBar.isHidden = false
+            bottomToolBar.isHidden = false
+        }
     }
 }
 

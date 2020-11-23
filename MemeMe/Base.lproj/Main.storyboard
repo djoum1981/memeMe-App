@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meme.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6ih-04-vMA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ih-04-vMA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="XXP-GU-y26">
@@ -89,10 +89,12 @@
                     </view>
                     <connections>
                         <outlet property="bottomTexField" destination="UIe-Yo-mKN" id="4a0-sT-963"/>
+                        <outlet property="bottomToolBar" destination="XXP-GU-y26" id="1fw-uc-zxQ"/>
                         <outlet property="cameraButton" destination="rgZ-di-TY6" id="j6y-cS-10q"/>
                         <outlet property="memeMeImage" destination="6ih-04-vMA" id="hEF-4f-58v"/>
                         <outlet property="sendButton" destination="YYa-rf-lyD" id="hb6-yF-yR2"/>
                         <outlet property="topTextField" destination="Bcm-gq-5d8" id="5Nk-vp-CXr"/>
+                        <outlet property="topToolBar" destination="F6K-Eg-xyY" id="fVV-zo-bj7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -103,7 +105,6 @@
     <resources>
         <image name="album" width="29" height="29"/>
         <image name="camera" catalog="system" width="128" height="94"/>
-        <image name="meme.jpg" width="1000" height="597"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
