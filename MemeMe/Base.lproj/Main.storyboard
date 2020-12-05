@@ -39,6 +39,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gGH-aP-Kqf"/>
                     <connections>
+                        <outlet property="layoutFlow" destination="Toq-uS-HaC" id="U4L-UB-Djy"/>
                         <outlet property="memeCV" destination="EJO-KY-zpM" id="cJ5-ch-Aw2"/>
                     </connections>
                 </viewController>
