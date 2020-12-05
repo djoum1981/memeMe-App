@@ -217,7 +217,7 @@
                     <tabBarItem key="tabBarItem" title="Item 2" image="rectangle.grid.3x2" catalog="system" id="iww-Fw-4kp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BGc-Ns-h1Q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -23,9 +23,10 @@ struct K {
     static let textSize = 40
     
     struct Cell {
-        static var collectionCellIdentifier = "memeCollectionCell"
+        static var collectionCellIdentifier = "memeCollectionCell" 
         static var tableCellIdentifier = "memeTableCell"
         static var tableViewCellNibName = "MemeTableViewCell"
+        static var collectionViewCellNibName = "MemeCollectionViewCell"
     }
     
     struct ViewControllerID {
