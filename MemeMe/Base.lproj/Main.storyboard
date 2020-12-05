@@ -41,11 +41,42 @@
                     <connections>
                         <outlet property="layoutFlow" destination="Toq-uS-HaC" id="U4L-UB-Djy"/>
                         <outlet property="memeCV" destination="EJO-KY-zpM" id="cJ5-ch-Aw2"/>
+                        <segue destination="yQ6-Vi-Hpb" kind="show" identifier="colToDetailsVC" id="TJV-lU-2WP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CD-PB-mF8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="101" y="505"/>
+        </scene>
+        <!--Meme Details View Controller-->
+        <scene sceneID="562-8u-v5W">
+            <objects>
+                <viewController storyboardIdentifier="memeDetailID" hidesBottomBarWhenPushed="YES" id="yQ6-Vi-Hpb" customClass="MemeDetailsViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="maj-eT-AHG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="unc-g0-4Dh">
+                                <rect key="frame" x="8" y="52" width="304" height="420"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oDD-bJ-fj0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="unc-g0-4Dh" firstAttribute="top" secondItem="oDD-bJ-fj0" secondAttribute="top" constant="8" id="PL0-qY-eed"/>
+                            <constraint firstItem="oDD-bJ-fj0" firstAttribute="bottom" secondItem="unc-g0-4Dh" secondAttribute="bottom" constant="8" id="oXP-l0-l1J"/>
+                            <constraint firstItem="oDD-bJ-fj0" firstAttribute="trailing" secondItem="unc-g0-4Dh" secondAttribute="trailing" constant="8" id="pK3-fZ-z39"/>
+                            <constraint firstItem="unc-g0-4Dh" firstAttribute="leading" secondItem="oDD-bJ-fj0" secondAttribute="leading" constant="8" id="v7a-Eb-Esy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xC9-6r-kAN"/>
+                    <connections>
+                        <outlet property="memeDetailImageView" destination="unc-g0-4Dh" id="eEg-sZ-4h3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLA-iw-hiw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908" y="749"/>
         </scene>
         <!--MemeMe-->
         <scene sceneID="2ly-OQ-z4e">
@@ -73,6 +104,7 @@
                     <navigationItem key="navigationItem" id="X8W-5I-RaV"/>
                     <connections>
                         <outlet property="memeMeTV" destination="o4g-HZ-f31" id="K6d-s0-6eA"/>
+                        <segue destination="yQ6-Vi-Hpb" kind="show" identifier="memeTBToDetailVc" id="5Le-cr-GEm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APL-U3-K47" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -190,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="134"/>
+            <point key="canvasLocation" x="909" y="-120"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="aoy-nd-mii">
@@ -218,7 +250,7 @@
                     <tabBarItem key="tabBarItem" title="Item 2" image="rectangle.grid.3x2" catalog="system" id="iww-Fw-4kp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BGc-Ns-h1Q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -231,6 +263,9 @@
             <point key="canvasLocation" x="-684" y="505"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="TJV-lU-2WP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="album" width="29" height="29"/>
         <image name="camera" catalog="system" width="128" height="94"/>

@@ -33,5 +33,6 @@ struct K {
         static var addNewMemeVCID = "MemeMeVCID"
         static var collToNewMemeSeque = "collToNewMeme"
         static var tableToNewMemeSeque = "tableToNewMeme"
+        static var detailsViewControllerID = "memeDetailID"
     }
 }
