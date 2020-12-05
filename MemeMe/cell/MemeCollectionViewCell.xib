@@ -16,8 +16,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="165" height="158"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XrO-kV-ecw">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="XrO-kV-ecw">
                         <rect key="frame" x="0.0" y="0.0" width="165" height="158"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="158" id="2HO-na-3Hf"/>
+                            <constraint firstAttribute="width" constant="165" id="Kh3-Y7-40c"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
@@ -35,4 +39,7 @@
             <point key="canvasLocation" x="110.86956521739131" y="84.375"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="test" width="236" height="236"/>
+    </resources>
 </document>

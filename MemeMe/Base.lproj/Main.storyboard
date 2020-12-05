@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EJO-KY-zpM">
-                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                                <rect key="frame" x="8" y="52" width="304" height="371"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Toq-uS-HaC">
                                     <size key="itemSize" width="128" height="128"/>
@@ -31,10 +31,10 @@
                         <viewLayoutGuide key="safeArea" id="rsA-Hr-FwF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rsA-Hr-FwF" firstAttribute="trailing" secondItem="EJO-KY-zpM" secondAttribute="trailing" id="7eE-8T-GEm"/>
-                            <constraint firstItem="EJO-KY-zpM" firstAttribute="top" secondItem="rsA-Hr-FwF" secondAttribute="top" id="MCO-dL-LND"/>
-                            <constraint firstItem="rsA-Hr-FwF" firstAttribute="bottom" secondItem="EJO-KY-zpM" secondAttribute="bottom" id="hGV-mH-VwL"/>
-                            <constraint firstItem="EJO-KY-zpM" firstAttribute="leading" secondItem="rsA-Hr-FwF" secondAttribute="leading" id="mBc-aA-w95"/>
+                            <constraint firstItem="rsA-Hr-FwF" firstAttribute="trailing" secondItem="EJO-KY-zpM" secondAttribute="trailing" constant="8" id="7eE-8T-GEm"/>
+                            <constraint firstItem="EJO-KY-zpM" firstAttribute="top" secondItem="rsA-Hr-FwF" secondAttribute="top" constant="8" id="MCO-dL-LND"/>
+                            <constraint firstItem="rsA-Hr-FwF" firstAttribute="bottom" secondItem="EJO-KY-zpM" secondAttribute="bottom" constant="8" id="hGV-mH-VwL"/>
+                            <constraint firstItem="EJO-KY-zpM" firstAttribute="leading" secondItem="rsA-Hr-FwF" secondAttribute="leading" constant="8" id="mBc-aA-w95"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gGH-aP-Kqf"/>
@@ -228,10 +228,10 @@
         <scene sceneID="aoy-nd-mii">
             <objects>
                 <navigationController title="Sent Memes" automaticallyAdjustsScrollViewInsets="NO" id="IUQ-ya-63W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" image="list.bullet" catalog="system" id="iVU-ew-jtD"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list.bullet" catalog="system" id="iVU-ew-jtD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iio-50-rt1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -247,7 +247,7 @@
         <scene sceneID="Ld1-Uv-BV2">
             <objects>
                 <navigationController title="Sent Memes" automaticallyAdjustsScrollViewInsets="NO" id="deK-bP-0uY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" image="rectangle.grid.3x2" catalog="system" id="iww-Fw-4kp"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="rectangle.grid.3x2" catalog="system" id="iww-Fw-4kp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BGc-Ns-h1Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

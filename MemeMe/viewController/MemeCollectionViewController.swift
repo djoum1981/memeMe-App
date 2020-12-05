@@ -17,7 +17,7 @@ class MemeCollectionViewController: UIViewController{
     @IBOutlet weak var layoutFlow: UICollectionViewFlowLayout!
     @IBOutlet weak var memeCV: UICollectionView!
     
-    var itemSize: CGSize = CGSize(width: 0, height: 0)
+    //var itemSize: CGSize = CGSize(width: 0, height: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,27 +33,22 @@ class MemeCollectionViewController: UIViewController{
         // Register cell classes
         memeCV.register(UINib(nibName: K.Cell.collectionViewCellNibName, bundle: nil), forCellWithReuseIdentifier: K.Cell.collectionCellIdentifier)
         
-        setCollectionViewFlowFromDelegate()
+        setCollectionViewFlowLayout()
     }
-    
-    
-    //this algorith for flow layout is
-    //credited to Todd Perkins in
-    // IOS Developement Essential Training from
-    //Lynda.com
-    func setCollectionViewFlowFromDelegate() {
-        if let layout = layoutFlow.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
-            let itemPerRow: CGFloat = 4
-            let padding: CGFloat = 5
-            let totalPadding: CGFloat = padding * (itemPerRow - 1)
-            let paddingForEach: CGFloat = totalPadding / itemPerRow
-            let width = (layoutFlow.collectionView?.frame.width)! / itemPerRow - paddingForEach
-            let height = width
-            layout.minimumLineSpacing = padding
-            layout.minimumInteritemSpacing = 0
-            layout.estimatedItemSize = itemSize
-            itemSize = CGSize(width: width, height: height)
-        }
+
+    /*
+        function code content is
+        credited to Udacity
+        provided to fix the
+        layout flow on the collection view
+     */
+    func setCollectionViewFlowLayout() {
+        let space:CGFloat = 3.0
+            let dimension = (view.frame.size.width - (2 * space)) / 3.0
+
+        layoutFlow.minimumInteritemSpacing = space
+        layoutFlow.minimumLineSpacing = space
+        layoutFlow.itemSize = CGSize(width: dimension, height: dimension)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +62,7 @@ class MemeCollectionViewController: UIViewController{
     }
 }
 
-extension MemeCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension MemeCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memeMes.count
     }
@@ -79,16 +74,12 @@ extension MemeCollectionViewController: UICollectionViewDataSource, UICollection
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return itemSize
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let meme = memeMes[indexPath.row]
         let detailVC = storyboard?.instantiateViewController(identifier: K.ViewControllerID.detailsViewControllerID) as! MemeDetailsViewController
         detailVC.memeMeDetail = meme
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
 }
 

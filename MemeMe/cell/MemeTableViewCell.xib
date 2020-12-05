@@ -17,22 +17,29 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WAd-y6-Cee">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album" translatesAutoresizingMaskIntoConstraints="NO" id="qxI-sr-tRV">
-                                <rect key="frame" x="0.0" y="8" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="qxI-sr-tRV">
+                                <rect key="frame" x="8" y="4" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="ey6-Wy-Y6O"/>
                                     <constraint firstAttribute="width" constant="100" id="xad-jN-7XE"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is a test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u78-i7-eFB">
-                                <rect key="frame" x="108" y="48" width="212" height="20.5"/>
+                                <rect key="frame" x="116" y="44" width="196" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="u78-i7-eFB" firstAttribute="leading" secondItem="qxI-sr-tRV" secondAttribute="trailing" constant="8" id="3Zm-Ng-0wm"/>
+                            <constraint firstItem="qxI-sr-tRV" firstAttribute="leading" secondItem="WAd-y6-Cee" secondAttribute="leading" constant="8" id="AJI-wB-ord"/>
+                            <constraint firstAttribute="bottom" secondItem="qxI-sr-tRV" secondAttribute="bottom" constant="4" id="a23-Qx-Gmf"/>
+                            <constraint firstItem="qxI-sr-tRV" firstAttribute="top" secondItem="WAd-y6-Cee" secondAttribute="top" constant="4" id="l0E-F0-aHC"/>
+                            <constraint firstAttribute="trailing" secondItem="u78-i7-eFB" secondAttribute="trailing" constant="8" id="uRf-Rh-SSc"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -51,6 +58,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="album" width="29" height="29"/>
+        <image name="test2" width="924" height="634"/>
     </resources>
 </document>
