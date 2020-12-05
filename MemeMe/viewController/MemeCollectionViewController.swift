@@ -13,11 +13,9 @@ class MemeCollectionViewController: UIViewController{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.memeMes
     }
-
+    
     @IBOutlet weak var layoutFlow: UICollectionViewFlowLayout!
     @IBOutlet weak var memeCV: UICollectionView!
-    
-    //var itemSize: CGSize = CGSize(width: 0, height: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +33,17 @@ class MemeCollectionViewController: UIViewController{
         
         setCollectionViewFlowLayout()
     }
-
+    
     /*
-        function code content is
-        credited to Udacity
-        provided to fix the
-        layout flow on the collection view
+     code content is
+     credited to Udacity
+     provided to fix the
+     layout flow on the collection view
      */
     func setCollectionViewFlowLayout() {
         let space:CGFloat = 3.0
-            let dimension = (view.frame.size.width - (2 * space)) / 3.0
-
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        
         layoutFlow.minimumInteritemSpacing = space
         layoutFlow.minimumLineSpacing = space
         layoutFlow.itemSize = CGSize(width: dimension, height: dimension)
@@ -55,7 +53,7 @@ class MemeCollectionViewController: UIViewController{
         super.viewWillAppear(animated)
         memeCV.reloadData()
     }
-
+    
     @objc func addMeme(){
         let addNewMemeMe = storyboard?.instantiateViewController(identifier: K.ViewControllerID.addNewMemeVCID) as! MemeMeVC
         navigationController?.pushViewController(addNewMemeMe, animated: true)
@@ -74,7 +72,6 @@ extension MemeCollectionViewController: UICollectionViewDataSource, UICollection
         return cell
     }
     
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let meme = memeMes[indexPath.row]
         let detailVC = storyboard?.instantiateViewController(identifier: K.ViewControllerID.detailsViewControllerID) as! MemeDetailsViewController

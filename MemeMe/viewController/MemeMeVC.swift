@@ -122,8 +122,6 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     fileprivate func saveMeme(memeMeMade: UIImage) {
         if let imageview = self.memeMeImage.image, let topText = self.topTextField.text, let bottomText = self.bottomTexField.text{
             let thisMeme = Meme(topText: topText, bottomText: bottomText, image: imageview, memeImage: memeMeMade)
-            //-Mark save the meme here using the meme struck,
-            //however no instruction were provided on how to save it
             addMemeToList(meme: thisMeme)
         }
     }
