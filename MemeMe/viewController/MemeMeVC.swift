@@ -7,9 +7,7 @@
 
 import UIKit
 
-
-
-class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var memeMeImage: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
@@ -22,6 +20,7 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         sendButton.isEnabled = false
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
         setAttributesForMemeText(textField: topTextField, placeHolderText: K.topTextPlaceHolder)
@@ -35,6 +34,7 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
         //this line of code snippet is credited to Udacity
         //source: lesson 4 code for keyboard adjustemet
@@ -44,6 +44,8 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
         //this line of code snippet is credited to Udacity
         //source: lesson 4 code for keyboard adjustemet
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -112,16 +114,23 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         alertController.message = message
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alertController, animated: true, completion: nil)
     }
     
     fileprivate func saveMeme(memeMeMade: UIImage) {
         if let imageview = self.memeMeImage.image, let topText = self.topTextField.text, let bottomText = self.bottomTexField.text{
-            let _ = Meme(topText: topText, bottomText: bottomText, image: imageview, memeImage: memeMeMade)
+            let thisMeme = Meme(topText: topText, bottomText: bottomText, image: imageview, memeImage: memeMeMade)
             //-Mark save the meme here using the meme struck,
             //however no instruction were provided on how to save it
+            addMemeToList(meme: thisMeme)
         }
+    }
+    
+    func addMemeToList(meme: Meme) {
+        let appDelegateObject = UIApplication.shared.delegate as! AppDelegate
+        appDelegateObject.memeMes.append(meme)
     }
     
     @IBAction func actionPerformedButtonPressed(_ sender: UIBarButtonItem) {
@@ -132,6 +141,7 @@ class MemeMeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             bottomTexField.text = K.bottomTextPlaceHolder
             sendButton.isEnabled = false
             self.dismiss(animated: true, completion: nil)
+            navigationController?.popToRootViewController(animated: true)
         case .send:
             let memeMeMade = makeMeme()
             let uiActivityController = UIActivityViewController(activityItems: [memeMeMade], applicationActivities: nil)
@@ -154,9 +164,9 @@ extension MemeMeVC: UITextFieldDelegate{
     func setAttributesForMemeText(textField: UITextField, placeHolderText: String){
         let textAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.font: UIFont(name: K.textFont, size: CGFloat(K.textSize))!,
-            NSAttributedString.Key.strokeColor: UIColor.white,
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.strokeWidth: 5.0
+            NSAttributedString.Key.strokeColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.strokeWidth: -5.0
         ]
         textField.text = placeHolderText
         textField.defaultTextAttributes = textAttributes
