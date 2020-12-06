@@ -16,12 +16,14 @@ class MemeCollectionViewController: UIViewController{
     
     @IBOutlet weak var layoutFlow: UICollectionViewFlowLayout!
     @IBOutlet weak var memeCV: UICollectionView!
+    @IBOutlet weak var memeColEmptyIV: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         memeCV.dataSource = self
         memeCV.delegate = self
+        memeColEmptyIV.isHidden = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
         
@@ -32,6 +34,18 @@ class MemeCollectionViewController: UIViewController{
         memeCV.register(UINib(nibName: K.Cell.collectionViewCellNibName, bundle: nil), forCellWithReuseIdentifier: K.Cell.collectionCellIdentifier)
         
         setCollectionViewFlowLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if memeCV.visibleCells.isEmpty{
+            memeCV.isHidden = true
+            memeColEmptyIV.isHidden = false
+            memeColEmptyIV.image = UIImage(named: "aMeme")
+        }else{
+            memeCV.isHidden = false
+            memeColEmptyIV.isHidden = true
+        }
     }
     
     /*

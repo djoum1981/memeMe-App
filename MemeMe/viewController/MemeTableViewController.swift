@@ -8,7 +8,8 @@
 import UIKit
 class MemeTableViewController: UIViewController {
 
-    @IBOutlet weak var memeMeTV: UITableView!
+    @IBOutlet weak var noMemeImage: UIImageView!
+    @IBOutlet weak var memeTVEmptyIV: UITableView!
     
     var memeMes: [Meme]!{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -18,8 +19,9 @@ class MemeTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        memeMeTV.delegate = self
-        memeMeTV.dataSource = self
+        memeTVEmptyIV.delegate = self
+        memeTVEmptyIV.dataSource = self
+        noMemeImage.isHidden = true
         
         //self.navigationItem.leftBarButtonItem = self.editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
@@ -28,17 +30,33 @@ class MemeTableViewController: UIViewController {
         navigationItem.title = "Sent Memes"
         
         //self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.cell.tableCellIdentifier)
-        memeMeTV.register(UINib(nibName: K.Cell.tableViewCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.tableCellIdentifier)
+        memeTVEmptyIV.register(UINib(nibName: K.Cell.tableViewCellNibName, bundle: nil), forCellReuseIdentifier: K.Cell.tableCellIdentifier)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        memeMeTV.reloadData()
+        memeTVEmptyIV.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showHideTableView()
     }
     
     @objc func addMeme(){
         let addNewMemeMe = storyboard?.instantiateViewController(identifier: K.ViewControllerID.addNewMemeVCID) as! MemeMeVC
         navigationController?.pushViewController(addNewMemeMe, animated: true)
+    }
+    
+    func showHideTableView() {
+        if memeTVEmptyIV.visibleCells.isEmpty{
+            memeTVEmptyIV.isHidden = true
+            noMemeImage.isHidden = false
+            noMemeImage.image = UIImage(named: "aMeme")
+        }else{
+            memeTVEmptyIV.isHidden = false
+            noMemeImage.isHidden = true
+        }
     }
 }
 
