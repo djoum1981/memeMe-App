@@ -181,8 +181,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UIe-Yo-mKN">
-                                <rect key="frame" x="16" y="389.5" width="288" height="18.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="16" y="387.5" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -198,9 +198,9 @@
                             <constraint firstItem="XXP-GU-y26" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LYV-ne-NJn"/>
                             <constraint firstItem="F6K-Eg-xyY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U2b-iZ-lZG"/>
                             <constraint firstItem="6ih-04-vMA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YKp-gr-lKY"/>
-                            <constraint firstItem="Bcm-gq-5d8" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="f2u-OK-cdd"/>
+                            <constraint firstItem="Bcm-gq-5d8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="f2u-OK-cdd"/>
                             <constraint firstItem="XXP-GU-y26" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h8j-dO-X9i"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Bcm-gq-5d8" secondAttribute="trailing" constant="16" id="hyc-kB-kZS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bcm-gq-5d8" secondAttribute="trailing" constant="16" id="hyc-kB-kZS"/>
                             <constraint firstItem="UIe-Yo-mKN" firstAttribute="centerX" secondItem="6ih-04-vMA" secondAttribute="centerX" id="kI0-SH-Q1g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UIe-Yo-mKN" secondAttribute="trailing" constant="16" id="mbE-kd-1ut"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6ih-04-vMA" secondAttribute="trailing" id="qWF-jM-fSo"/>
